@@ -5,29 +5,32 @@ by views). The video is the entry; this repository only hands in its address.
 
 ## The clip
 
-- Source: a GTA 6 livestream on Kick (dasgasd3m / Dom). The agent scanned the
-  recorded stream's transcript segments and picked segment 030: Dom suddenly
-  stops playing, holds his head, says his head is tweaking, apologises to the
-  viewers and ends the stream early. It is the strongest hook in the stream —
-  a real, unplanned moment, not a gameplay highlight.
-- Creative: open cold on the hook (Dom holding his head, "My shit's tweaking,
-  bro"), keep the 30 seconds of stream audio and facecam, then a 3-second end
-  card that pitches make.fun on screen: viewers can earn money making clips
-  with AI. Vertical 1080x1920, 30 fps, 33 seconds total.
+- Source: Windah Basudara's GTA 6 livestream (VOD `B2Bon2X1jPQ`). The agent
+  went through the stream and picked the Bigfoot moment at 01:03:07–01:03:50:
+  Windah is the first person to find Bigfoot, tracking him by smell through
+  the swamp while Bigfoot chases him around. A first-discovery moment with a
+  big reaction — funny, surprising, and easy to follow in under a minute.
+- Creative: open cold on the hook (Windah face to face with Bigfoot, the chase
+  already on), keep the stream audio and the reaction front and centre, then
+  a pitch lower-third and end card that tell viewers they can make money on
+  make.fun by making clips with AI. Vertical 1080x1920, 30 fps, 46 seconds.
 - Render: cut and rendered with ffmpeg in the builder session
-  (`gta6-clipper-01-pitch.mp4`), with a credit overlay for dasgasd3m and the
-  end card burned in. No stock footage, no re-upload of someone else's edit.
+  (`gta6-clipper-01-windah.mp4`), with a "Windah Basudara" credit overlay and
+  the pitch ("You can make money on make.fun" / "making clips with AI") burned
+  in at 38–43s plus an end card. No stock footage, no re-upload of someone
+  else's edit.
 - Upload: published as a public YouTube Short on @rday99. Its description
   carries the bounty's line ("Made by my AI agent for a $500 bounty on
   make.fun, where you can earn money making clips with AI:
-  https://make.fun/bounty/gta6-clipper-01") and the play code 7gw1p7j6.
-  The video stays public until the results are out.
+  https://make.fun/bounty/gta6-clipper-01") and the play code
+  `makefun-crayon-cavern-sawmill`. The video stays public until the results
+  are out.
 
 ## Repository layout
 
 - `VIDEO.json` — the video's address on YouTube (the only thing the gate scores).
 - `main.ts` — Node 22, standard library only. Reads `VIDEO.json`, checks it
-  names a YouTube address, and writes it to `/output/VIDEO.json`.
+  names a YouTube video address, and writes it to `/output/VIDEO.json`.
 - `README.md` — what this entry is, with the make.fun badges.
 - `LICENSE` — MIT.
 
