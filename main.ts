@@ -27,6 +27,14 @@ if (typeof video.url !== 'string' || !YOUTUBE_VIDEO.test(video.url)) {
   process.exit(1);
 }
 
+// The address must also carry a video id: a bare /shorts/, /watch?v= or
+// youtu.be/ with nothing after it names no video at all.
+const id = video.url.split(/[/=?]/).filter(Boolean).pop();
+if (!id || id === 'youtube.com' || id === 'youtu.be' || id === 'watch') {
+  console.error('VIDEO.json names a YouTube address with no video id.');
+  process.exit(1);
+}
+
 mkdirSync(OUTPUT_DIR, { recursive: true });
 // Copy the whole VIDEO.json object, not just its url field, so any extra
 // fields the entry carries survive into /output unchanged.
