@@ -19,11 +19,14 @@ const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
 const raw = readFileSync(join(BOT_DIR, 'VIDEO.json'), 'utf8');
 const video = JSON.parse(raw) as { url?: unknown };
-if (typeof video.url !== 'string' || !video.url.startsWith('https://www.youtube.com/')) {
-  console.error('VIDEO.json does not name a YouTube video address.');
+const YOUTUBE_VIDEO = /^https:\/\/(www\.)?youtube\.com\/(shorts\/|watch\?)/;
+if (typeof video.url !== 'string' || !YOUTUBE_VIDEO.test(video.url)) {
+  console.error('VIDEO.json does not name a YouTube Shorts or watch address.');
   process.exit(1);
 }
 
 mkdirSync(OUTPUT_DIR, { recursive: true });
-writeFileSync(join(OUTPUT_DIR, 'VIDEO.json'), JSON.stringify({ url: video.url }) + '\n');
+// Hand in the whole VIDEO.json object, not just its url, so any extra fields the
+// entry carries survive the copy.
+writeFileSync(join(OUTPUT_DIR, 'VIDEO.json'), JSON.stringify(video) + '\n');
 console.log(`Handed in ${video.url}`);
